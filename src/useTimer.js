@@ -1,24 +1,47 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
+import { formatTime } from "./formatTime";
 
+const listTimer = [];
 const useTimer = (ini = 0) => {
-  const [time, setTime] = "Your code here";
+  const [time, setTime] = useState(ini);
+  const [isStart, setIsStart] = useState(false);
+  const active = useRef();
+  useEffect(() => {
+    const refInterval = setInterval(() => {
+      if (isStart) {
+        setTime((prev) => prev + 1);
+      }
+    }, 1000);
 
-  const isStart = "Your code here";
-  const active = "Your code here";
-  const refInterval = "Your code here";
+    return () => clearInterval(refInterval);
+  }, [isStart]);
 
   const startTimer = () => {
-    "Your code here";
+    setIsStart(true);
     active.current.disabled = true;
   };
   const stopTimer = () => {
-    "Your code here";
-  };
-  const resetTimer = () => {
-    "Your code here";
+    setIsStart(false);
     active.current.disabled = false;
   };
+  const resetTimer = () => {
+    setTime(0);
+    setIsStart(false);
+    active.current.disabled = false;
+    listTimer.length = 0;
+  };
+  const splitTimer = () => {
+    listTimer.push(formatTime(time))
+  };
 
-  return { time, startTimer, stopTimer, resetTimer, active };
+  return {
+    time,
+    startTimer,
+    stopTimer,
+    resetTimer,
+    splitTimer,
+    listTimer,
+    active,
+  };
 };
 export default useTimer;

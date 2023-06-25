@@ -1,6 +1,6 @@
 :root {
-  --text-shadow-color: #ff9c99;
-  --text-main-color: #d74742;
+  --text-shadow-color: #333;
+  --text-main-color: #cb3434;
 }
 * {
   box-sizing: border-box;
@@ -24,8 +24,8 @@ code {
 
 h1 {
   color: var(--text-main-color);
-  font-family: "Rouge Script", cursive;
-  font-size: 130px;
+  font-family:'Times New Roman', Times, serif;
+  font-size: 80px;
   font-weight: normal;
   line-height: 48px;
   margin: 0 0 50px;
@@ -55,15 +55,17 @@ p {
     rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 48px;
 }
 .timer__display {
-  padding-left: 1.5em;
+  padding-left: 1.7em;
+  font-size: 5.125em;
+  color: #ffffff;
 }
 .timer__display > p {
-  font-size: 5em;
+  font-size: 1em;
 }
 
 .button__wrapper {
   display: flex;
-  width: 30vw;
+  width: 50vw;
   padding: 1em;
   justify-content: space-evenly;
   align-items: center;
@@ -91,6 +93,15 @@ p {
   border: 1px solid var(--text-main-color);
   background-color: var(--text-main-color);
 } */
+.split__timer{
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  text-align: center;
+}
+.split__timer > p {
+  font-size: 1.5em;
+}
+
 @media only screen and (max-device-width: 1280px) {
   * {
     font-size: 0.9em;
@@ -104,7 +115,13 @@ p {
     width: 100%;
   }
   .timer__display > p {
-    font-size: 3.8em;
+    font-size: 1em;
     padding-left: 0;
+  }
+  .timer__display{
+    padding-left: 0;
+  }
+  .split__timer{
+    grid-template-columns: repeat(2, auto);
   }
 }
