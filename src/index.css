@@ -130,4 +130,7 @@ p {
   .split__timer{
     grid-template-columns: repeat(2, auto);
   }
+  .split__timer > p {
+    font-size: 1em;
+  }
 }
